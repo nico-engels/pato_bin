@@ -1,15 +1,20 @@
-                                                                            _   
-  * C++ Pato_bin *                                                       __(.)<
-  - Utilitário Conversor Binário de/para Tipos Integrais -             __\___)__
-                                                                        0   1 1 
-                     EM CONSTRUÇÃO!!!                                    0 0 1
+         _
+      __(.)<
+    __\___)__  
+      0   1 1
+       0 0 1
+
+# C++ Pato_bin
+## UtilitÃ¡rio Conversor BinÃ¡rio de/para Tipos Integrais
+
+EM CONSTRUÃ‡ÃƒO!!!
                                                                              
-* Licença MIT                                                                      
+* LicenÃ§a MIT                                                                      
 * C++14
 * Header-only 
 * constexpr       
 
-Trecho de código de exemplo:                                                                        
+Trecho de cÃ³digo de exemplo:                                                                        
 
 ```c++
 #include <cstdint>
@@ -50,7 +55,7 @@ fixed-length str!!!
     f  i  x  e  d  -  l  e  n  g  t  h     s  t  r  !  !  !
 ```
 
-Alterando o to_bin<int8_t>(a.size()) para to_bin<int64_t>(a.size()) imprime:
+Alterando o `to_bin<int8_t>(a.size())` para `to_bin<int64_t>(a.size())` imprime:
 
 ```
 fixed-length str!!!
