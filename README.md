@@ -55,7 +55,7 @@ fixed-length str!!!
     f  i  x  e  d  -  l  e  n  g  t  h     s  t  r  !  !  !
 ```
 
-Changing the to_bin<int8_t>(a.size()) to to_bin<int64_t>(a.size()) prints:
+Changing the `to_bin<int8_t>(a.size())` to `to_bin<int64_t>(a.size())` prints:
 
 ```
 fixed-length str!!!
