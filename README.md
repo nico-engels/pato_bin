@@ -1,8 +1,13 @@
-                                                                            _   
-  * C++ Pato_bin *                                                       __(.)<
-  - Binary Utility Converter from/to Integral Types -                  __\___)__
-                                                                        0   1 1 
-                     UNDER CONSTRUCTION!!!                               0 0 1
+         _
+      __(.)<
+    __\___)__  
+      0   1 1
+       0 0 1
+                                                                               
+# C++ Pato_bin                                                       
+## Binary Utility Converter from/to Integral Types 
+                                                                         
+UNDER CONSTRUCTION!!!                            
                                                                              
 * MIT-licensed
 * C++14
