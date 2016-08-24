@@ -10,7 +10,7 @@
 EM CONSTRUÇÃO!!!
 
 * Licença MIT
-* C++14
+* C++11
 * Header-only
 * constexpr
 
