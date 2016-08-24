@@ -25,6 +25,8 @@
 */
 #include <array>
 
+namespace pato_bin {
+
 using byte_t = unsigned char;
 class big_tag_t { };
 class little_tag_t { };
@@ -277,6 +279,8 @@ constexpr uint64_t bin_to(const std::array<byte_t, 8>& a, big_tag_t)
              (uint64_t { a[3] } << 32) + (uint64_t { a[2] } << 40) + 
              (uint64_t { a[1] } << 48) + (uint64_t { a[0] } << 56) };
 }
+
+} // namespace pato_bin
 
 #endif
 // PATO_BIN_H

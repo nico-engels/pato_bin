@@ -47,6 +47,7 @@ The functions template are specialized for all integral types defined in
 #include <vector>
 #include "pato_bin.h"
 using namespace std;
+using namespace pato_bin;
 
 int main()
 {

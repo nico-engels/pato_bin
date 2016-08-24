@@ -48,6 +48,7 @@ As funções genéricas são especializadas para todos os tipos definidos no
 #include <vector>
 #include "pato_bin.h"
 using namespace std;
+using namespace pato_bin;
 
 int main()
 {
