@@ -96,18 +96,16 @@ fixed-length str!!!
 ### Explicit Endianness
 
 ```c++
-   // ...
-   int32_t i = 0x1A'2B'3C'4D;
+    // ...
+    int32_t i = 0x1A2B3C4D;                  // 0x1A'2B'3C'4D
 
-   auto binl_i = to_bin(i, endian::little); // array<byte_t, 4> { 0x4D, 0x3C, 0x2B, 0x1A };
+    auto binl_i = to_bin(i, endian::little); // array<byte_t, 4> { 0x4D, 0x3C, 0x2B, 0x1A };
+    auto binb_i = to_bin(i, endian::big);    // array<byte_t, 4> { 0x1A, 0x2B, 0x3C, 0x4D };
 
-   auto binb_i = to_bin(i, endian::big);    // array<byte_t, 4> { 0x1A, 0x2B, 0x3C, 0x4D };
+    // ...
 
-   // ...
-
-   // Revert
-   int32_t rl_i = bin_to<int32_t>(binl_i, endian::little); // i == rl_i
-
-   int32_t rb_i = bin_to<int32_t>(binl_i, endian::big);    // i == rl_i
-   // ...
+    // Revert
+    int32_t rl_i = bin_to<int32_t>(binl_i, endian::little); // rl_i == i
+    int32_t rb_i = bin_to<int32_t>(binl_i, endian::big);    // rb_i == i
+    // ...
 ```
