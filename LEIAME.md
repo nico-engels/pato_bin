@@ -7,8 +7,6 @@
 # C++ Pato_bin
 ## Utilitário Conversor Binário de/para Tipos Integrais
 
-EM CONSTRUÇÃO!!!
-
 * Licença MIT
 * C++11
 * Header-only
@@ -16,9 +14,16 @@ EM CONSTRUÇÃO!!!
 
 ## Referência
 
-A biblioteca define dois conjuntos de funções sobrecarregadas através de
-templates especializados. Uma converte tipos integrais para um array de dados
-binários:
+A biblioteca define dois conjuntos de funções sobrecarregadas através de templates especializados. Eles
+dependem em um tipo auxiliar para representar os dados binários conceitualmente:
+
+```c++
+using byte_t = unsigned char;
+```
+
+O alias é apenas para coveniência, enquanto C++ não possui um tipo padrão para representar
+dados binários, ao usar o tipo é mais simples de imprimir e expressar. Usando o tipo como retorno
+é a função da biblioteca que converte tipos integrais para um array de dados binários:
 
 ```c++
 template <class T, class E = native_tag_t>
@@ -107,6 +112,6 @@ fixed-length str!!!
 
     // Reverter
     int32_t rl_i = bin_to<int32_t>(binl_i, endian::little); // rl_i == i
-    int32_t rb_i = bin_to<int32_t>(binl_i, endian::big);    // rb_i == i
+    int32_t rb_i = bin_to<int32_t>(binb_i, endian::big);    // rb_i == i
     // ...
 ```
