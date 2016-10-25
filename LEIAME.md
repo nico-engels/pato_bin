@@ -14,6 +14,48 @@ EM CONSTRUÇÃO!!!
 * Header-only
 * constexpr
 
+## Motivação
+
+Em C++, sempre quando necessitamos realizar alguma tarefa que envolva alguma
+representação em binário de tipos com mais de um byte, é preciso recorrer a
+operações bit-a-bit para converter os dados em determinada ordenação (endianess).
+Um desenvolvedor, por exemplo, poderia escrever um software para comunicação TLS:
+
+```c++
+    // ...
+    vector<unsigned char> stream { 0x16, 0x03, 0x01 }; // Protocolo TLSv1
+                                                       // Registro que contêm as mensagens
+                                                       // 0x16 - Handshake
+                                                       // 0x0301 - SSL versão (TLS 1.0)
+
+    vector<unsigned char> handshake_packet = make_client_hello();
+
+    // Após o cabeçalho tem 2 bytes em big-endian para informar o tamanho do registro
+    int16_t packet_size = static_cast<int16_t>(handshake_packet.size());
+    stream.push_back(packet_size >> 8);
+    stream.push_back(packet_size & 0x00FF);
+
+    // Faz o registro completo e envia os dados via rede
+    stream.insert(stream.end(), handshake_packet.begin(), handshake_packet.end());
+    send_over_wire(stream);
+    // ...
+```
+
+Não é claro, sem o comentário, o que está sendo feito na conversão para os 2
+bytes do tamanho do registro. Qual a ordenação (endianess)? Quais conversões
+as operações shift e e-lógico em bits acarretam?
+
+Pensando nessa necessidade de clareza e comodidade foi desenvolvida a biblioteca
+que possibilita deixar o intuido explícito, sem perder otimizações:
+
+```c++
+    // ...
+    // Após o cabeçalho tem 2 bytes em big-endian para informar o tamanho do registro
+    for (auto b : to_bin<int16_t>(handshake_packet.size(), endian::big))
+      stream.push_back(b);
+    // ...
+```
+
 ## Referência
 
 A biblioteca define dois conjuntos de funções sobrecarregadas através de
