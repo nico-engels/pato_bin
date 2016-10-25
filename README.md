@@ -7,8 +7,6 @@
 # C++ Pato_bin
 ## Binary Utility Converter from/to Integral Types
 
-UNDER CONSTRUCTION!!!
-
 * MIT-licensed
 * C++11
 * Header-only
@@ -58,8 +56,16 @@ witch permits made the convertion explicit, without losing performace.
 
 ## Reference
 
-The library defines two set of overload functions throught template
-specializations. One converts integral types to a array of binary data:
+The library defines two set of overload functions throught template specializations. They
+relay in a auxiliary type to represent the binary data conceptualy:
+
+```c++
+using byte_t = unsigned char;
+```
+
+This alias is just for convenience, while the C++ don't have a standart type for represent
+binary data, using this type is easy to print and express in code. Using the type as return is
+the function of library that converts integral types to a array of binary data:
 
 ```c++
 template <class T, class E = native_tag_t>
@@ -148,6 +154,6 @@ fixed-length str!!!
 
     // Revert
     int32_t rl_i = bin_to<int32_t>(binl_i, endian::little); // rl_i == i
-    int32_t rb_i = bin_to<int32_t>(binl_i, endian::big);    // rb_i == i
+    int32_t rb_i = bin_to<int32_t>(binb_i, endian::big);    // rb_i == i
     // ...
 ```
