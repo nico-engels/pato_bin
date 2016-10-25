@@ -21,7 +21,7 @@ One developer, for example, could be writing some software for TLS communication
 
 ```c++
     // ...
-    vector<unsigned char> stream { 0x16, 0x03, 0x01 }; // Protocolo TLSv1
+    vector<unsigned char> stream { 0x16, 0x03, 0x01 }; // TLSv1 Protocol
                                                        // Header frame
                                                        // 0x16 - Handshake
                                                        // 0x0301 - SSL version (TLS 1.0)
@@ -65,11 +65,11 @@ using byte_t = unsigned char;
 
 This alias is just for convenience, while the C++ don't have a standart type for represent
 binary data, using this type is easy to print and express in code. Using the type as return is
-the function of library that converts integral types to a array of binary data:
+the function that converts integral types to a array of binary data:
 
 ```c++
 template <class T, class E = native_tag_t>
-constexpr std::array<byte_t, sizeof(T)> to_bin(const T&, E = {});
+constexpr std::array<byte_t, sizeof(T)> to_bin(T, E = {});
 ```
 
 And another to convert a array of binary data to a integral type:

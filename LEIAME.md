@@ -65,11 +65,11 @@ using byte_t = unsigned char;
 
 O alias é apenas para coveniência, enquanto C++ não possui um tipo padrão para representar
 dados binários, ao usar o tipo é mais simples de imprimir e expressar. Usando o tipo como retorno
-é a função da biblioteca que converte tipos integrais para um array de dados binários:
+é a função que converte tipos integrais para um array de dados binários:
 
 ```c++
 template <class T, class E = native_tag_t>
-constexpr std::array<byte_t, sizeof(T)> to_bin(const T&, E = {});
+constexpr std::array<byte_t, sizeof(T)> to_bin(T, E = {});
 ```
 
 E outra para converter um array de dados binários em um tipo integral:
