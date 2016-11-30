@@ -35,9 +35,9 @@ enum class endian {
   big,
   little,
 #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
-  native = big
-#elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
   native = little
+#elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+  native = big
 #else
 #error "mixed endian"
 #endif
