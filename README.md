@@ -8,7 +8,7 @@
 ## Binary Utility Converter from/to Integral Types
 
 * MIT-licensed
-* C++11
+* C++14
 * Header-only
 * constexpr
 
@@ -68,15 +68,15 @@ binary data, using this type is easy to print and express in code. Using the typ
 the function that converts integral types to a array of binary data:
 
 ```c++
-template <class T, class E = native_tag_t>
-constexpr std::array<byte_t, sizeof(T)> to_bin(T, E = {});
+template <class T>
+constexpr std::array<byte_t, sizeof(T)> to_bin(T, endian = endian::native);
 ```
 
 And another to convert a array of binary data to a integral type:
 
 ```c++
-template <class T, class E = native_tag_t>
-constexpr T bin_to(const std::array<byte_t, sizeof(T)>&, E = {});
+template <class T>
+constexpr T bin_to(const std::array<byte_t, sizeof(T)>&, endian = endian::native);
 ```
 
 The functions template are specialized for all integral types defined in

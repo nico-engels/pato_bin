@@ -8,7 +8,7 @@
 ## Utilitário Conversor Binário de/para Tipos Integrais
 
 * Licença MIT
-* C++11
+* C++14
 * Header-only
 * constexpr
 
@@ -68,15 +68,15 @@ dados binários, ao usar o tipo é mais simples de imprimir e expressar. Usando 
 é a função que converte tipos integrais para um array de dados binários:
 
 ```c++
-template <class T, class E = native_tag_t>
-constexpr std::array<byte_t, sizeof(T)> to_bin(T, E = {});
+template <class T>
+constexpr std::array<byte_t, sizeof(T)> to_bin(T, endian = endian::native);
 ```
 
 E outra para converter um array de dados binários em um tipo integral:
 
 ```c++
-template <class T, class E = native_tag_t>
-constexpr T bin_to(const std::array<byte_t, sizeof(T)>&, E = {});
+template <class T>
+constexpr T bin_to(const std::array<byte_t, sizeof(T)>&, endian = endian::native);
 ```
 
 As funções genéricas são especializadas para todos os tipos definidos no
@@ -145,16 +145,16 @@ fixed-length str!!!
 
 ```c++
     // ...
-    int32_t i = 0x1A2B3C4D;                  // 0x1A'2B'3C'4D
+    constexpr int32_t i = 0x1A2B3C4D;                  // 0x1A'2B'3C'4D
 
-    auto binl_i = to_bin(i, endian::little); // array<byte_t, 4> { 0x4D, 0x3C, 0x2B, 0x1A };
-    auto binb_i = to_bin(i, endian::big);    // array<byte_t, 4> { 0x1A, 0x2B, 0x3C, 0x4D };
+    constexpr auto binl_i = to_bin(i, endian::little); // array<byte_t, 4> { 0x4D, 0x3C, 0x2B, 0x1A };
+    constexpr auto binb_i = to_bin(i, endian::big);    // array<byte_t, 4> { 0x1A, 0x2B, 0x3C, 0x4D };
 
     // ...
 
     // Reverter
-    int32_t rl_i = bin_to<int32_t>(binl_i, endian::little); // rl_i == i
-    int32_t rb_i = bin_to<int32_t>(binb_i, endian::big);    // rb_i == i
+    constexpr int32_t rl_i = bin_to<int32_t>(binl_i, endian::little); // rl_i == i
+    constexpr int32_t rb_i = bin_to<int32_t>(binb_i, endian::big);    // rb_i == i
     // ...
     
     // Tudo é constexpr    
