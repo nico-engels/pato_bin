@@ -156,4 +156,8 @@ fixed-length str!!!
     int32_t rl_i = bin_to<int32_t>(binl_i, endian::little); // rl_i == i
     int32_t rb_i = bin_to<int32_t>(binb_i, endian::big);    // rb_i == i
     // ...
+    
+    // Tudo é constexpr    
+    static_cast(i == rl_i, "igual");
+    static_cast(i == rb_i, "igual");
 ```
